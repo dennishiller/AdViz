@@ -33,9 +33,6 @@
     <script>
 
 
-        // google maps
-
-
         // login laden
 
 
@@ -43,20 +40,27 @@
             var loginScreen = document.getElementById("login_screen");
             var mapAndList = document.getElementById("mapAndList");
 
+
+
             var username = login.username.value;
             var password = login.password.value;
-            if (username == "aa" && password == "aa") {
 
-                $('#login_screen').hide();
-                //$("#mapAndList").show();
-                return true;
+                loginScreen.style.display = 'none';
+                mapAndList.style.display = '';
 
-            } else {
-                alert(username + " " + password)
-                return false;
+
+
+
+        }
+
+        function validCredentials(usrname,password) {
+            if(usrname == a){
+                if(password ==a){
+                    return true;
+                }
+
             }
-
-
+            return false;
         }
 
     </script>
@@ -80,7 +84,7 @@
             <div class="col-4">
                 <div class="card">
                     <div class="card-body">
-                        <form name="login" action="" autocomplete="off">
+                        <form name="login" autocomplete="off">
                             <div class="form-group">
 
                                 <input type="text" class="form-control" id="login_Username" name="username"
@@ -90,7 +94,7 @@
                                 <input type="password" class="form-control" id="login_Password"
                                        name="password" required>
                             </div>
-                            <button id="sendlogin" class="btn btn-primary" onclick="loginFunction()">
+                            <button id="sendlogin" class="btn btn-primary" onclick="loginFunction()" >
                                 <i class="fas fa-sign-in-alt"></i>
                                 Login
                             </button>
@@ -103,13 +107,13 @@
 </div>
 
 <!-- MAP AND LIST -->
-<div id="mapAndList" class="row justify-content-center align-items-center" style="height:100vh">
+<div id="mapAndList" class="row justify-content-center align-items-center" style="display: none; height:100vh">
     <div class="col-8">
         <div class="card">
             <div class="card-body">
                 <div id="map_Container" class="col-sm">
                     <h3>map-Container</h3>
-                    <button id="showAdress" type="button">Show</button>
+                    <button id="showAdress" type="button" onclick="">Show</button>
                     <button id="addEntry" type="submit">Add</button>
 
                     <div class="row">
