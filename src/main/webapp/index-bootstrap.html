@@ -1,0 +1,297 @@
+<!-- https://wiki.openstreetmap.org/wiki/Die_HTML_Dateien OSM einbinden Tutorial -->
+<!DOCTYPE html>
+<html>
+<head>
+
+    <link rel="stylesheet" href="css/bootstrap-extensions.css">
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+            integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+            crossorigin="anonymous"></script>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+            integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+            crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+            integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+            crossorigin="anonymous"></script>
+    <!-- /Bootstrap -->
+
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+          integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    <!-- /Icons -->
+
+
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Titel</title>
+
+    <script>
+
+
+        // google maps
+
+
+        // login laden
+
+
+        function loginFunction() {
+            var loginScreen = document.getElementById("login_screen");
+            var mapAndList = document.getElementById("mapAndList");
+
+            var username = login.username.value;
+            var password = login.password.value;
+            if (username == "aa" && password == "aa") {
+
+                $('#login_screen').hide();
+                //$("#mapAndList").show();
+                return true;
+
+            } else {
+                alert(username + " " + password)
+                return false;
+            }
+
+
+        }
+
+    </script>
+    <script type="text/javascript" src="js/maps.js" async></script>
+    <script type="text/javascript" src="js/logic.js" async></script>
+
+    <script async defer
+            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBKrIZKWesAN-Hzfs8GFhFDekhSfYgQYZI&callback=initMap">
+    </script>
+
+
+</head>
+<body>
+<header><h2>Welcome to AdViz!</h2></header>
+
+
+<!-- LOGIN -->
+<div id="login_screen" >
+    <div class="container">
+        <div class="row justify-content-center align-items-center" style="height:100vh">
+            <div class="col-4">
+                <div class="card">
+                    <div class="card-body">
+                        <form name="login" action="" autocomplete="off">
+                            <div class="form-group">
+
+                                <input type="text" class="form-control" id="login_Username" name="username"
+                                       required>
+                            </div>
+                            <div class="form-group">
+                                <input type="password" class="form-control" id="login_Password"
+                                       name="password" required>
+                            </div>
+                            <button id="sendlogin" class="btn btn-primary" onclick="loginFunction()">
+                                <i class="fas fa-sign-in-alt"></i>
+                                Login
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- MAP AND LIST -->
+<div id="mapAndList" class="row justify-content-center align-items-center" style="height:100vh">
+    <div class="col-8">
+        <div class="card">
+            <div class="card-body">
+                <div id="map_Container" class="col-sm">
+                    <h3>map-Container</h3>
+                    <button id="showAdress" type="button">Show</button>
+                    <button id="addEntry" type="submit">Add</button>
+
+                    <div class="row">
+                        <div id="list" class="col-sm">
+                            <div class="row">
+                                <div class="col">
+                                    <div class="list-group" id="list-tab" role="tablist">
+                                        <a class="list-group-item list-group-item-action" id="list-home-list"
+                                           data-toggle="list" href="#list-home" role="tab" aria-controls="home">Home</a>
+                                        <a class="list-group-item list-group-item-action" id="list-profile-list"
+                                           data-toggle="list" href="#list-profile" role="tab" aria-controls="profile">Profile</a>
+                                        <a class="list-group-item list-group-item-action" id="list-messages-list"
+                                           data-toggle="list" href="#list-messages" role="tab" aria-controls="messages">Messages</a>
+                                        <a class="list-group-item list-group-item-action" id="list-settings-list"
+                                           data-toggle="list" href="#list-settings" role="tab" aria-controls="settings">Settings</a>
+                                    </div>
+
+
+                                </div>
+
+                                <div id="map"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- CREATE USER -->
+
+<div id="createUser" style="">
+
+    <div class="row justify-content-center align-items-center" style="height:100vh" id="cu_screen">
+        <!--   <div class="col-6">-->
+
+        <div class="card">
+            <div class="card-body">
+                <h3>Create new Entry</h3>
+                <form>
+                    <div class="form-group row">
+                        <label class="col-sm-6 col-form-label" for="form_cu_vorname"><b>Vorname</b></label>
+                        <div class="col-sm-10">
+                            <input type="text" id="form_cu_vorname" required> <br>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label class="col-sm-6 col-form-label" for="form_cu_nachname"><b>Nachname</b></label>
+                        <div class="col-sm-10">
+                            <input type="text" id="form_cu_nachname" required> <br>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label class="col-sm-6 col-form-label" for="form_cu_strasse"><b>Straße</b></label>
+                        <div class="col-sm-10">
+                            <input type="text" id="form_cu_strasse" required> <br>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label class="col-sm-6 col-form-label" for="form_cu_plz"><b>Postleitzahl</b></label>
+                        <div class="col-sm-10">
+                            <input type="number" id="form_cu_plz" required> <br>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label class="col-sm-6 col-form-label" for="form_cu_stadt"><b>Stadt</b></label>
+                        <div class="col-sm-10">
+                            <input type="text" id="form_cu_stadt" required> <br>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label class="col-sm-6 col-form-label" for="form_cu_land"><b>Land</b></label>
+                        <div class="col-sm-10">
+                            <input type="text" id="form_cu_land" required> <br>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label class="col-sm-6 col-form-label" for="form_cu_isPrivate"><b>Privat</b></label>
+                        <div class="col-sm-10">
+                            <input type="checkbox" id="form_cu_isPrivate"
+
+                                   value="option1">
+                        </div>
+                    </div>
+
+
+                    <button name="Submit" type="submit" class="btn btn-primary">
+                        <i class="fas fa-user-plus"></i>
+                        Hinzufuegen
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+<!-- SHOW USER -->
+
+<div id="showUser" style="">
+    <div class="row justify-content-center align-items-center" style="height:100vh" id="su_screen">
+        <div class="card">
+            <div class="card-body">
+                <form>
+                    <div class="form-group row">
+                        <label class="col-sm-6 col-form-label" for="form_su_vorname"><b>Vorname</b></label>
+                        <div class="col-sm-10">
+                            <input type="text" id="form_su_vorname" required> <br>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label class="col-sm-6 col-form-label" for="form_su_nachname"><b>Nachname</b></label>
+                        <div class="col-sm-10">
+                            <input type="text" id="form_su_nachname" required> <br>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label class="col-sm-6 col-form-label" for="form_su_strasse"><b>Straße</b></label>
+                        <div class="col-sm-10">
+                            <input type="text" id="form_su_strasse" required> <br>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label class="col-sm-6 col-form-label" for="form_su_plz"><b>Postleitzahl</b></label>
+                        <div class="col-sm-10">
+                            <input type="number" id="form_su_plz" required> <br>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label class="col-sm-6 col-form-label" for="form_su_stadt"><b>Stadt</b></label>
+                        <div class="col-sm-10">
+                            <input type="text" id="form_su_stadt" required> <br>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label class="col-sm-6 col-form-label" for="form_su_land"><b>Land</b></label>
+                        <div class="col-sm-10">
+                            <input type="text" id="form_su_land" required> <br>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label class="col-sm-6 col-form-label" for="form_su_isPrivate"><b>Privat</b></label>
+                        <div class="col-sm-10">
+                            <input type="checkbox" id="form_su_isPrivate"
+
+                                   value="option1">
+                        </div>
+                    </div>
+                    <p>
+                        <button name="update" type="submit" class="btn btn-primary">
+                            <i class="fas fa-sync"></i>
+                            Aktualisieren
+                        </button>
+                        <button name="delete" type="button" class="btn btn-warning">
+                            <i class="far fa-trash-alt"></i>
+                            Löschen
+                        </button>
+                    </p>
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+</div>
+
+
+</body>
+
+</html>

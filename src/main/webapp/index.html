@@ -1,0 +1,102 @@
+<!-- https://wiki.openstreetmap.org/wiki/Die_HTML_Dateien OSM einbinden Tutorial -->
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="css/formular.css">
+
+
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Titel</title>
+
+    <script>
+        // Initialize and add the map
+        function initMap() {
+            // The location of Uluru
+            var berlin = {lat: 52.520, lng: 13.404};
+            var htw = {lat: 52.456, lng: 13.526};
+
+            var map = new google.maps.Map(
+                document.getElementById('map'), {zoom: 10, center: berlin});
+            // The marker, positioned at Uluru
+            var marker = new google.maps.Marker({position: berlin, map: map});
+
+        }
+
+    </script>
+    <script async defer
+            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBKrIZKWesAN-Hzfs8GFhFDekhSfYgQYZI&callback=initMap">
+    </script>
+
+
+</head>
+<body>
+<header><h2>Welcome to AdViz!</h2>
+</header>
+<div id="content">
+
+    <div id="login_Container" class="screens">
+        <h3>login-Container</h3>
+        <form id="login_Form">
+            <label><b>Username</b> </label>
+            <input type="text" placeholder="Enter Username" name="username" required> <br>
+            <label><b>Password</b> </label>
+            <input type="password" placeholder="Enter Password" name="password" required> <br>
+            <button>Login</button>
+        </form>
+    </div>
+
+    <div id="map_Container" class="screens">
+        <h3>map-Container</h3>
+        <button id="showAdress" type="button">Show</button>
+        <button id="addEntry" type="submit">Add</button>
+
+        <div id="map"></div>
+    </div>
+
+    <div id="createruser_Container" class="screens">
+        <h3>createUser-Container</h3>
+        <form>
+            <label><b>Vorname</b></label>
+            <input type="text" placeholder="Vorname" name="form_cu_vorname" required> <br>
+            <label><b>Nachname</b></label>
+            <input type="text" placeholder="Nachname" name="form_cu_nachname" required> <br>
+            <label><b>Straße</b></label>
+            <input type="text" placeholder="Straße" name="form_cu_strasse" required> <br>
+            <label><b>Postleitzahl</b></label>
+            <input type="number" placeholder="Postleitzahl" name="form_cu_plz" required> <br>
+            <label><b>Stadt</b></label>
+            <input type="text" placeholder="Stadt" name="form_cu_stadt" required> <br>
+            <label><b>Land</b></label>
+            <input type="text" placeholder="Land" name="form_cu_land" required> <br>
+            <label><b>Privat</b></label>
+            <input type="checkbox" name="privat">
+            <button name="Submit" type="submit">Hinzufügen</button>
+        </form>
+    </div>
+
+    <div id="showuser_Container" class="screens">
+        <h3>showUser-Container</h3>
+        <form>
+            <label><b>Vorname</b></label>
+            <input type="text" placeholder="Vorname" name="form_su_vorname" required> <br>
+            <label><b>Nachname</b></label>
+            <input type="text" placeholder="Nachname" name="form_su_nachname" required> <br>
+            <label><b>Straße</b></label>
+            <input type="text" placeholder="Straße" name="form_su_strasse" required> <br>
+            <label><b>Postleitzahl</b></label>
+            <input type="number" placeholder="Postleitzahl" name="form_su_su_plz" required> <br>
+            <label><b>Stadt</b></label>
+            <input type="text" placeholder="Stadt" name="form_su_stadt" required> <br>
+            <label><b>Land</b></label>
+            <input type="text" placeholder="Land" name="form_su_land" required> <br>
+            <label><b>Privat</b></label>
+            <input type="checkbox" name="privat">
+            <button name="update" type="submit">Aktualisieren</button>
+            <button name="delete" type="button">Löschen</button>
+        </form>
+    </div>
+
+</div>
+</body>
+</html>
